@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Інструкція організатора 2event</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap">
+</head>
+<body>
+<style>
+/* Layout: fixed left table of contents on wide screens, single column on phones; content column ~68ch */
+:root{
+  --bg:#f7f8fb; --surface:#ffffff; --fg:#17202e; --muted:#5b6678; --line:#dde3ec;
+  --accent:#0f6e8c; --accent-soft:#e3f1f5; --warn:#8a5a00; --warn-soft:#fdf3dc;
+  --display:"Lora",Georgia,"Times New Roman",serif; --body:"Manrope","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f141b; --surface:#171e28; --fg:#e7ecf3; --muted:#9aa6b8; --line:#2a3443;
+  --accent:#5cc2de; --accent-soft:#12303a; --warn:#f0c15a; --warn-soft:#2d2411; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f141b; --surface:#171e28; --fg:#e7ecf3; --muted:#9aa6b8; --line:#2a3443;
+  --accent:#5cc2de; --accent-soft:#12303a; --warn:#f0c15a; --warn-soft:#2d2411; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:260px minmax(0,1fr);gap:48px;max-width:1120px;margin:0 auto;
+  padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+nav.toc{position:sticky;top:24px;align-self:start;font-size:14px}
+nav.toc .brand{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;margin-bottom:18px}
+nav.toc .brand span{color:var(--accent)}
+nav.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+nav.toc li a{display:block;padding:6px 14px;color:var(--muted);text-decoration:none;border-left:2px solid transparent;margin-left:-2px}
+nav.toc li a:hover,nav.toc li a:focus-visible{color:var(--fg);border-left-color:var(--accent)}
+main{min-width:0;max-width:72ch}
+header.hero{margin-bottom:40px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-family:var(--display);font-size:clamp(32px,5vw,46px);line-height:1.1;margin:10px 0 14px;text-wrap:balance}
+.lead{font-size:19px;color:var(--muted);margin:0 0 20px}
+.launch{display:flex;gap:14px;align-items:flex-start;background:var(--accent-soft);border-radius:10px;padding:14px 18px;font-size:15px}
+.launch b{color:var(--accent)}
+section{margin-top:52px;padding-top:8px}
+h2{font-family:var(--display);font-size:28px;line-height:1.2;margin:0 0 16px;text-wrap:balance;scroll-margin-top:24px}
+h2 .n{color:var(--accent);font-family:var(--body);font-weight:800;font-size:14px;letter-spacing:.1em;display:block;margin-bottom:6px}
+p{margin:0 0 14px}
+.trouble{border-left:3px solid var(--warn);background:var(--warn-soft);padding:12px 16px;border-radius:0 8px 8px 0;margin-top:18px;font-size:15.5px}
+.trouble b{color:var(--warn);display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--accent-soft);padding:1px 6px;border-radius:5px;word-break:break-all}
+.hint{font-size:15px;color:var(--muted);margin-top:12px}
+.hint code{background:transparent;padding:0;color:var(--fg)}
+.check{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.check li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.check input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--accent)}
+.check label{cursor:pointer}
+.check li.done label{color:var(--muted);text-decoration:line-through}
+.progress{font-size:14px;color:var(--muted);margin:0 0 14px;font-variant-numeric:tabular-nums}
+.share{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.share button{font:inherit;font-weight:600;color:var(--accent);background:var(--accent-soft);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.share button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:28px;padding-block:24px 60px}
+  nav.toc{position:static}
+  nav.toc ol{display:flex;flex-wrap:wrap;gap:4px 0;border-left:0}
+  nav.toc li a{border-left:0;border-bottom:2px solid var(--line);padding:4px 10px;margin:0}
+  body{font-size:16px}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="Зміст">
+  <div class="brand">2<span>event</span> · інструкція</div>
+  <ol>
+    <li><a href="#addresses">1. Де що шукати</a></li>
+    <li><a href="#login">2. Вхід і створення події</a></li>
+    <li><a href="#tickets">3. Типи квитків і ціни</a></li>
+    <li><a href="#payments">4. Оплата карткою і Monobank</a></li>
+    <li><a href="#scan">5. Сканування на вході</a></li>
+    <li><a href="#cabinet">6. Кабінет: продажі, гості, експорт</a></li>
+    <li><a href="#invites">7. Запрошення та розсилка</a></li>
+    <li><a href="#program">8. Програма, слоти, столи</a></li>
+    <li><a href="#networking">9. Знайомства й зустрічі</a></li>
+    <li><a href="#cashier">10. Каса і друк</a></li>
+    <li><a href="#checklist">Чекліст за день до події</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">Для організаторів подій</div>
+  <h1>Як провести подію на новій платформі 2event.com</h1>
+  <p class="lead">Підготувати подію, продати квитки, зустріти гостей біля дверей і перевірити результати. Крок за кроком, із порадами на випадок, коли щось пішло не так.</p>
+  <div class="launch"><div><b>Запуск у ніч з 26 на 27 жовтня 2026.</b> Усі адреси в цій інструкції починають працювати на 2event.com з 27 жовтня. До того старий сайт лишається на 2event.com.ua, а потім продовжує працювати там для вже створених подій.</div></div>
+</header>
+
+<section id="addresses">
+  <h2><span class="n">Розділ 1</span>Де що шукати</h2>
+  <p>Почніть із <a href="https://2event.com/org?lang=uk">кабінету організатора</a>. Виберіть організацію, потім потрібну подію. Назва події вгорі допомагає перевірити, що ви змінюєте саме її.</p>
+  <p>У кабінеті мова задається параметром <code>?lang=uk</code> у кінці адреси. У таблиці нижче <code>ORG</code> означає позначення вашої організації з адресного рядка, <code>EVENT</code> позначення події в кабінеті, а <code>SLUG</code> назву події в публічному посиланні. Це місця для підстановки, а не готові адреси.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Що потрібно</th><th>Адреса сторінки</th></tr></thead>
+    <tbody>
+    <tr><td>Увійти</td><td><a href="https://2event.com/login?lang=uk">2event.com/login?lang=uk</a></td></tr>
+    <tr><td>Створити організацію</td><td><a href="https://2event.com/org/create?lang=uk">2event.com/org/create?lang=uk</a></td></tr>
+    <tr><td>Створити подію</td><td><code>2event.com/org/ORG/new?lang=uk</code></td></tr>
+    <tr><td>Огляд події</td><td><code>2event.com/org/ORG/e/EVENT?lang=uk</code></td></tr>
+    <tr><td>Основні налаштування</td><td><code>…/e/EVENT/settings?lang=uk</code></td></tr>
+    <tr><td>Квитки й ціни</td><td><code>…/e/EVENT/tickets?lang=uk</code></td></tr>
+    <tr><td>Оплати й виплати</td><td><code>…/e/EVENT/tickets/payments?lang=uk</code></td></tr>
+    <tr><td>Гості</td><td><code>…/e/EVENT/visitors?lang=uk</code></td></tr>
+    <tr><td>Статистика й файли звітів</td><td><code>…/e/EVENT/stats?lang=uk</code></td></tr>
+    <tr><td>Запрошення</td><td><code>…/e/EVENT/invitations?lang=uk</code></td></tr>
+    <tr><td>Налаштування входу</td><td><code>…/e/EVENT/checkin?lang=uk</code></td></tr>
+    <tr><td>Програма</td><td><code>…/e/EVENT/program?lang=uk</code></td></tr>
+    <tr><td>Столи й час для зустрічей</td><td><code>…/e/EVENT/networking?lang=uk</code></td></tr>
+    <tr><td>Каса</td><td><code>…/e/EVENT/cashier?lang=uk</code></td></tr>
+    <tr><td>Бейджі</td><td><code>…/e/EVENT/badges?lang=uk</code></td></tr>
+    <tr><td>Сторінка для покупців</td><td><code>2event.com/e/SLUG?lang=uk</code></td></tr>
+    </tbody></table></div>
+  <p class="hint">Усі адреси з трьома крапками починаються з <code>https://2event.com/org/ORG</code>.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Перевірте, чи замінили умовні позначення та чи ввійшли потрібною поштою. Якщо сторінка недоступна, попросіть власника організації перевірити ваш доступ до цієї події.</div>
+</section>
+
+<section id="login">
+  <h2><span class="n">Розділ 2</span>Вхід і створення події</h2>
+  <p>На сторінці входу введіть свою пошту й натисніть «Надіслати код». Відкрийте лист і введіть шість цифр: пароль не потрібен. Код діє 15 хвилин і використовується один раз. Якщо на сторінці є інший спосіб входу, ним також можна скористатися.</p>
+  <p>Для наявної команди прийміть запрошення власника. Якщо організації ще немає, відкрийте сторінку її створення й пройдіть запропоновані кроки. Зручно, коли кожен менеджер має окремий доступ: тоді кожен працює зі своєї пошти, а власник визначає дозволені дії.</p>
+  <p>У своїй організації натисніть створення події. Найпростіший спосіб «Заповнити вручну». Вкажіть назву, дату й час, місце або онлайн-формат. Перевірте час завершення та часовий пояс, особливо якщо подія відбувається в іншій країні. За потреби одразу додайте перший квиток із ціною та кількістю місць.</p>
+  <p>Є також створення з посилання або опису. Воно готує чернетку: перевірте назву, дати, адресу й квитки перед подальшими діями.</p>
+  <p>Після створення доповніть опис, обкладинку й потрібні налаштування. Чернетка ще не означає публікацію. Натисніть «Опублікувати», перегляньте перевірку й усуньте причини, які заважають публікації. Потім відкрийте сторінку для покупців і перевірте її очима клієнта.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Для входу перевірте папку «Спам», адресу пошти й строк дії коду; за потреби запросіть новий. Якщо подія не публікується, відкрийте перелік зауважень: платні квитки без готового способу оплати блокують публікацію.</div>
+</section>
+
+<section id="tickets">
+  <h2><span class="n">Розділ 3</span>Типи квитків і ціни</h2>
+  <p>Відкрийте «Квитки й ціни» та натисніть «Додати тип квитка». Доступні платний квиток і безкоштовна реєстрація. Дайте зрозумілу назву, наприклад «Стандартний» або «Студентський», і визначте, скільки таких квитків можна видати.</p>
+  <p>Для платного типу задайте ціну у валюті події. Вкажіть початок і завершення продажу та найбільшу кількість квитків в одному замовленні. За потреби увімкніть показ залишку, доступ лише за кодом або попереднє схвалення організатором. Прихований тип покупець побачить після введення коду.</p>
+  <p>Можна налаштувати кілька послідовних цін: наприклад, ранню та звичайну. У редакторі хвиль задайте суми й умови переходу за датою або кількістю квитків. Ціну, за якою вже були продажі, не переписуйте: використовуйте наступну хвилю.</p>
+  <p>Залишок враховує продані квитки та місця, які покупці зараз оплачують. Резерв на час оплати становить 15 хвилин. Архівування типу припиняє нові продажі, але вже видані квитки залишаються дійсними.</p>
+  <p>Окремо перевірте, хто сплачує збори: покупець понад вашу ціну чи організатор із неї. Остаточну суму дивіться в оформленні покупки; налаштування комісій узгодьте до першого продажу.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Якщо квитка немає на сторінці, перевірте період продажу, залишок і приховування за кодом. Якщо поле заблоковане після продажів, дотримуйтеся пояснення на екрані й змінюйте лише дозволені майбутні умови.</div>
+</section>
+
+<section id="payments">
+  <h2><span class="n">Розділ 4</span>Оплата карткою та Monobank</h2>
+  <p>Спосіб приймання грошей обирається в основних налаштуваннях події. Його стан і фінансові результати перевіряйте в «Оплати й виплати». Безкоштовній реєстрації підключення платежів не потрібне.</p>
+  <p>Для карткових оплат через Stripe натисніть «Підключити Stripe» та заповніть запитані дані компанії й рахунку. Після повернення перевірте стан: подані дані ще не означають, що приймання оплат уже ввімкнене. Гроші надходять на ваш рахунок Stripe, а переказ у банк відбувається за його правилами. Покупцеві доступні картка, Apple Pay і Google Pay.</p>
+  <p>Monobank окремий спосіб для оплати картками в гривнях. Він з’являється серед варіантів, коли підключення доступне для організації. Оплата проходить через рахунок 2event у Monobank; виплата організатору передбачена на його IBAN після події. У звіті відображаються комісія, уже виплачена сума та залишок до виплати.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Перевірте валюту, спосіб оплати та його готовність на сторінці події. Якщо покупець повідомляє про списання без квитка, спочатку знайдіть замовлення в оплатах, перш ніж пропонувати платити повторно.</div>
+</section>
+
+<section id="scan">
+  <h2><span class="n">Розділ 5</span>Сканування на вході з телефона</h2>
+  <p>У «Налаштуваннях входу» створіть окремі доступи для працівників: назва, роль, PIN і дозволені типи квитків. Передайте кожному його посилання або QR для відкриття сканера. Посилання має вигляд <code>2event.com/scan/TOKEN?lang=uk</code>, де <code>TOKEN</code> виданий сторінкою особистий код доступу.</p>
+  <p>На телефоні відкрийте це посилання, введіть PIN, назвіть пристрій і натисніть «Почати». Дозвольте камері працювати. Наведіть її на QR квитка та дочекайтеся результату: «Дійсний», «Вже пройшов», «Квиток не знайдено» або іншу причину.</p>
+  <p>Якщо камера недоступна, код можна ввести в поле вручну. Є також пошук за прізвищем, ім’ям, поштою або телефоном (щонайменше дві літери). Ручна відмітка входу потребує мережі.</p>
+  <p><strong>Робота без інтернету.</strong> Підготуйте кожен телефон заздалегідь із підключенням: дочекайтеся завантаження списку квитків і перевірте сканування без мережі. Пройдені гості тимчасово записуються на цьому телефоні; після повернення інтернету записи передаються до спільного списку. Без зв’язку різні телефони не бачать відміток один одного, тому повторний прохід може виявитися лише після звірки. Поверніть усі пристрої в мережу після входу.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Якщо сканер вимагає мережу або не знаходить квиток, передайте гостя відповідальному на стійці. Повідомлення про повтори чи неприйняті записи після звірки потрібно розібрати, а не просто закрити.</div>
+</section>
+
+<section id="cabinet">
+  <h2><span class="n">Розділ 6</span>Кабінет: продажі, гості, «хто прийшов» та експорт</h2>
+  <p>Огляд події показує стан одним поглядом, «Статистика» докладніші результати. Продаж квитка, оплата замовлення та відмітка входу різні речі: людина може оплатити й не прийти, а безкоштовний гість не створює грошового продажу.</p>
+  <p>У списку гостей шукайте за ім’ям, поштою або компанією. Фільтри: квиток, оплата, вхід, роль, джерело. Для перевірки присутності виберіть «Прийшли» або «Ще не прийшли». Якщо подія передбачає схвалення заявок, перегляньте розділ модерації.</p>
+  <p>У налаштуваннях входу є лічильники та журнал перевірок: коли перевіряли квиток, хто і з яким результатом. Остаточні підсумки входу переглядайте після звірки всіх телефонів.</p>
+  <p>Експорт біля списку гостей враховує вибрані фільтри. У «Статистиці» є файли відвідувачів і «Хто прийшов» для таблиць, журнал сканувань і фінансовий звіт. Файл для бухгалтерії є в розділі оплат. Перед передаванням клієнтові відкрийте файл і перевірте подію, склад людей і суми.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Якщо кількість гостей здається неправильною, приберіть зайві фільтри й перевірте, чи всі телефони передали входи. Якщо експорту немає, власник має перевірити ваші права на завантаження даних.</div>
+</section>
+
+<section id="invites">
+  <h2><span class="n">Розділ 7</span>Запрошення та розсилка</h2>
+  <p>У розділі запрошень введіть адреси списком або скористайтеся імпортом бази. Перед підтвердженням перевірте людей і спосіб запрошення. Варіанти: персональне посилання на реєстрацію або безкоштовний квиток одразу.</p>
+  <p>Під час імпорту уважно зіставте колонки й перегляньте підсумок. Додавання списку не завжди означає надсилання: дивіться обраний режим і повідомлення завершення. Якщо вибрано додавання квитків без листів, окремого повідомлення гостям не буде.</p>
+  <p>Нагадування про знайомства живуть на <code>…/e/EVENT/classic?tab=campaigns&amp;lang=uk</code>: завершити профіль, надіслати запити на зустріч, побачити нових людей, підтвердити зустріч. Перевірте опис, увімкнення та схвалення першого запуску.</p>
+  <p>Витрати й ліміти листів та SMS перевіряйте на <code>2event.com/org/ORG/messaging?lang=uk</code>. Статус відправлення не доводить, що людина прочитала лист.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Перевірте адреси, підсумок надсилання, доступний ліміт і наявність паузи. Якщо листа немає, перевірте «Спам» та результат попередньої спроби перед повторною розсилкою.</div>
+</section>
+
+<section id="program">
+  <h2><span class="n">Розділ 8</span>Програма, часові слоти та столи</h2>
+  <p>У «Програмі» додайте зали й виступи: назву, початок, завершення, зал і доповідачів. Можна заповнювати вручну або завантажити таблицю за зразком. Перевірте програму очима гостя на <code>2event.com/e/SLUG/program?lang=uk</code>.</p>
+  <p>Час виступів і час особистих зустрічей налаштовуються окремо. На сторінці «Столи й вікна» задайте кількість столів, тривалість зустрічі, перерву між зустрічами та проміжки, коли люди можуть їх бронювати. Саме ці проміжки утворюють доступні часові слоти.</p>
+  <p>Порівняйте місткість за днями з кількістю запитів. Якщо місць бракує, додайте столи або проміжок. Коли розклад уже використовується зустрічами, частина змін обмежена. Табло зустрічей можна вивести на екран там, де гості бачитимуть номери столів.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Перевірте часовий пояс, початок і завершення кожного виступу або проміжку. Якщо сітка вже зайнята зустрічами, додавайте столи чи окреме вікно.</div>
+</section>
+
+<section id="networking">
+  <h2><span class="n">Розділ 9</span>Знайомства й запити на зустріч</h2>
+  <p>Список людей для гостей: <code>2event.com/e/SLUG/people?lang=uk</code>, власні зустрічі: <a href="https://2event.com/me/meetings?lang=uk">2event.com/me/meetings?lang=uk</a>. Щоб призначити зустріч, учасник має ввійти й мати квиток на цю подію, а організатор має дозволити зустрічі.</p>
+  <p>Порадьте учасникові заповнити профіль і описати, кого він шукає. У списку людей потрібно обрати людину, натиснути «Запропонувати зустріч», вибрати доступний час або домовленість на місці й надіслати запит. Одержувач отримує лист, відповідь видно у «Моїх зустрічах».</p>
+  <p>Запит ще не є підтвердженою зустріччю: друга людина має його прийняти, після чого відкриваються контакти. Для зустрічі з часом стіл призначається за наявності місця.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Перевірте квиток, дозвіл на зустрічі та чи немає вже запиту між цими людьми. Якщо забагато запитів без відповіді, дочекайтеся рішень або відкличте непотрібні.</div>
+</section>
+
+<section id="cashier">
+  <h2><span class="n">Розділ 10</span>Каса і друк</h2>
+  <p>Відкрийте «Касу» та підготуйте доступ касира з окремим PIN щонайменше із шести символів. Виберіть місця або кількість, зарезервуйте їх і перевірте повну суму.</p>
+  <p>Оберіть готівку або термінал, прийміть оплату й лише після цього підтвердьте її та видайте квиток. Для терміналу касир перевіряє фактичне завершення оплати на пристрої; для готівки вказує отриману суму й перевіряє решту.</p>
+  <p>Після видачі доступні «Друк A4», копіювання посилання та надсилання посилання гостю. Для бейджів є окремий розділ: налаштуйте вигляд, перевірте зразок і підготуйте файл для друку.</p>
+  <p>Каса без інтернету потребує попереднього виділення місць цьому пристрою. До звірки входи за такими продажами погоджуйте зі стійкою за місцевим списком. Після відновлення мережі передайте журнал і поверніть невикористані місця; не очищайте дані браузера до завершення звірки.</p>
+  <div class="trouble"><b>Якщо щось пішло не так</b>Якщо квиток оплачено, але друк чи доставка зірвалися, повторіть лише друк або доставку: гроші вдруге не приймайте. Якщо продаж має стан «Потрібна звірка», перевірте журнал перед наступними діями.</div>
+</section>
+
+<section id="checklist">
+  <h2><span class="n">Перед подією</span>Чекліст «за день до події»</h2>
+  <p class="progress" id="progress">Відмічено 0 з 10. Позначки зберігаються лише у вашому браузері.</p>
+  <ul class="check" id="check">
+    <li><input type="checkbox" id="c1"><label for="c1">Перевірити публікацію, назву, адресу, дату й часовий пояс на сторінці покупця.</label></li>
+    <li><input type="checkbox" id="c2"><label for="c2">Перевірити типи квитків, залишки, ціни, наступні хвилі та завершення продажу.</label></li>
+    <li><input type="checkbox" id="c3"><label for="c3">Переконатися, що потрібний спосіб оплати готовий і подія не в тестовому режимі.</label></li>
+    <li><input type="checkbox" id="c4"><label for="c4">Переглянути гостей, заявки на схвалення та завантажити резервний список.</label></li>
+    <li><input type="checkbox" id="c5"><label for="c5">Перевірити програму, зали, проміжки для зустрічей і кількість столів.</label></li>
+    <li><input type="checkbox" id="c6"><label for="c6">Передати працівникам особисті посилання входу й PIN та перевірити їхні дозволи.</label></li>
+    <li><input type="checkbox" id="c7"><label for="c7">Відкрити сканер на кожному телефоні й перевірити роботу без інтернету.</label></li>
+    <li><input type="checkbox" id="c8"><label for="c8">Зарядити телефони, підготувати зарядні пристрої та домовитися про звірку входів.</label></li>
+    <li><input type="checkbox" id="c9"><label for="c9">Перевірити результат запрошень, потрібні нагадування й доступний ліміт повідомлень.</label></li>
+    <li><input type="checkbox" id="c10"><label for="c10">Підготувати касу, за потреби виділити місця для продажу без мережі й перевірити друк A4 та бейджів.</label></li>
+  </ul>
+</section>
+
+<div class="share">
+  Поділіться цією сторінкою з організатором: <button type="button" id="copy">Скопіювати посилання</button>
+  <span id="copied" hidden>Скопійовано.</span>
+</div>
+</main>
+</div>
+
+<script>
+(function(){
+  var KEY='2event-guide-checklist';
+  var boxes=document.querySelectorAll('#check input');
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){saved={}}
+  function render(){
+    var n=0;
+    boxes.forEach(function(b){b.parentElement.classList.toggle('done',b.checked);if(b.checked)n++;});
+    document.getElementById('progress').textContent='Відмічено '+n+' з '+boxes.length+'. Позначки зберігаються лише у вашому браузері.';
+  }
+  boxes.forEach(function(b){
+    if(saved[b.id])b.checked=true;
+    b.addEventListener('change',function(){
+      saved[b.id]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
+      render();
+    });
+  });
+  render();
+  var btn=document.getElementById('copy'),ok=document.getElementById('copied');
+  btn.addEventListener('click',function(){
+    var url=location.href.split('#')[0];
+    function done(){ok.hidden=false;setTimeout(function(){ok.hidden=true},2500)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){window.prompt&&null;done()})}
+    else done();
+  });
+})();
+</script>
+</body>
+</html>
