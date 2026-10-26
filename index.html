@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <title>Інструкція організатора 2event</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap">
 </head>
 <body>
 <style>
@@ -14,7 +14,7 @@
 :root{
   --bg:#f7f8fb; --surface:#ffffff; --fg:#17202e; --muted:#5b6678; --line:#dde3ec;
   --accent:#0f6e8c; --accent-soft:#e3f1f5; --warn:#8a5a00; --warn-soft:#fdf3dc;
-  --display:"Lora",Georgia,"Times New Roman",serif; --body:"Manrope","Segoe UI",system-ui,sans-serif;
+  --display:"Unbounded",system-ui,sans-serif; --body:"Noto Sans","Segoe UI",system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0f141b; --surface:#171e28; --fg:#e7ecf3; --muted:#9aa6b8; --line:#2a3443;
@@ -63,21 +63,6 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(-
 .share{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
 .share button{font:inherit;font-weight:600;color:var(--accent);background:var(--accent-soft);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
 .share button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.topbar{background:var(--surface);border-bottom:1px solid var(--line)}
-.topbar .in{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.logo{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo span{color:var(--accent)}
-.logo i{display:inline-grid;grid-template-columns:1fr 1fr;gap:2px;width:22px;height:22px}
-.logo i b{display:block;border-radius:50%}
-.topnav{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:14px}
-.topnav a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px}
-.topnav a:hover,.topnav a:focus-visible{color:var(--fg);background:var(--accent-soft)}
-.topnav a.cta{background:var(--accent);color:#fff;font-weight:600}
-.topnav a.cta:hover{background:var(--accent);opacity:.9}
-footer.foot{background:var(--surface);border-top:1px solid var(--line);margin-top:40px;font-size:14px;color:var(--muted)}
-footer.foot .in{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;padding-block:22px 28px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-footer.foot a{color:var(--muted)}
-footer.foot nav{display:flex;flex-wrap:wrap;gap:6px 18px}
 @media (max-width:860px){
   .wrap{grid-template-columns:minmax(0,1fr);gap:28px;padding-block:24px 60px}
   nav.toc{position:static}
@@ -87,15 +72,93 @@ footer.foot nav{display:flex;flex-wrap:wrap;gap:6px 18px}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 </style>
+<style>
+body{--body:'Noto Sans',sans-serif;--display:'Unbounded',sans-serif}
+.hf-header,.hf-footer{--hf-ink:#181c32;--hf-paper:#f6f4f1;--hf-brand:#ff782b;--hf-action:#c4500a;--hf-surface:#fff;--hf-muted:#4a4e63;--hf-border:#181c3220;box-sizing:border-box;font-family:'Noto Sans',sans-serif;font-size:15px;line-height:1.5;text-align:left}
+.hf-header *,.hf-footer *{box-sizing:border-box}
+.hf-header{position:relative;z-index:30;background:var(--hf-surface);color:var(--hf-ink);border-bottom:1px solid var(--hf-border);color-scheme:light}
+.hf-header a,.hf-footer a{color:inherit;text-decoration:none}
+.hf-header a:hover,.hf-footer a:hover{text-decoration:underline;text-underline-offset:4px}
+.hf-header :focus-visible,.hf-footer :focus-visible{outline:3px solid var(--hf-brand);outline-offset:3px;border-radius:4px}
+.hf-in{width:100%;max-width:1280px;margin-inline:auto;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
+.hf-bar{display:flex;align-items:center;gap:24px;min-height:72px}
+.hf-logo{display:inline-flex;align-items:center;flex-shrink:0;min-height:44px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em;line-height:1}
+.hf-logo b{color:var(--hf-brand);font-weight:inherit}
+.hf-primary{display:flex;align-items:center;gap:24px;margin-right:auto}
+.hf-primary a,.hf-language a,.hf-login{display:inline-flex;align-items:center;min-height:44px;font-weight:600;white-space:nowrap}
+.hf-actions{display:flex;align-items:center;gap:16px;margin-left:auto}
+.hf-language{display:flex;align-items:center;gap:12px;font-size:13px}
+.hf-language span{color:var(--hf-muted)}
+.hf-create{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border:1px solid var(--hf-action);border-radius:10px;background:var(--hf-action);color:#fff!important;font-weight:700;white-space:nowrap}
+.hf-create:hover{background:var(--hf-ink);border-color:var(--hf-ink)}
+.hf-mobile{display:none}
+.hf-mobile summary{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;cursor:pointer;list-style:none;font-weight:700;border:1px solid var(--hf-border);border-radius:10px}
+.hf-mobile summary::-webkit-details-marker{display:none}
+.hf-mobile[open] summary{background:var(--hf-paper)}
+.hf-mobile summary::after{content:' ☰';margin-left:8px}
+.hf-mobile[open] summary::after{content:' ×'}
+.hf-mobile-panel{position:absolute;left:0;right:0;top:100%;padding:16px;background:var(--hf-surface);border-bottom:1px solid var(--hf-border);box-shadow:0 12px 24px #181c3214;max-height:75dvh;overflow-y:auto}
+.hf-mobile-panel nav{display:flex;flex-direction:column;margin-bottom:16px}
+.hf-mobile-panel nav a{display:flex;align-items:center;min-height:48px;border-bottom:1px solid var(--hf-border);font-weight:600}
+.hf-mobile-panel .hf-language{margin-top:12px;flex-wrap:wrap}
+.hf-footer{margin-top:40px;background:var(--hf-ink);color:#fff;color-scheme:dark}
+.hf-footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:32px;padding-block:36px}
+.hf-footer p{margin:12px 0 0;font-size:14px;color:#fff}
+.hf-footer h2{margin:0 0 12px;font:600 14px/1.6 'Unbounded',sans-serif;color:#fff;scroll-margin-top:0}
+.hf-footer ul{list-style:none;margin:0;padding:0}
+.hf-footer li a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}
+.hf-footer-bottom{display:flex;align-items:center;flex-wrap:wrap;gap:8px 24px;padding-block:16px;border-top:1px solid #ffffff40;font-size:13px}
+.hf-footer-bottom nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.hf-footer-bottom a{display:inline-flex;align-items:center;min-height:44px}
+.hf-footer-bottom small{margin-left:auto;font-size:inherit}
+@media(max-width:1199px){
+ .hf-bar{min-height:60px;gap:12px}
+ .hf-bar>.hf-primary,.hf-actions>.hf-language,.hf-actions>.hf-create{display:none}
+ .hf-actions{gap:12px}
+ .hf-mobile{display:block}
+ .hf-logo{font-size:19px}
+ .hf-footer-top{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media(max-width:599px){
+ .hf-footer-top{grid-template-columns:1fr;gap:20px;padding-block:24px}
+ .hf-footer h2{margin-bottom:4px}
+ .hf-footer-bottom{align-items:flex-start;flex-direction:column;gap:8px}
+ .hf-footer-bottom small{margin-left:0}
+ .hf-mobile-panel .hf-create{display:flex;width:100%}
+}
+</style>
 
-<header class="topbar"><div class="in">
-  <a class="logo" href="https://2event.com/?lang=uk" aria-label="2event"><i aria-hidden="true"><b style="background:#ff782b"></b><b style="background:#2d7ff9"></b><b style="background:#2eb872"></b><b style="background:#ef4b4b"></b></i>2<span>event</span></a>
-  <nav class="topnav" aria-label="Посилання">
-    <a href="https://2event.com/?lang=uk">Сайт</a>
-    <a href="https://2event.com/me/tickets?lang=uk">Мої квитки</a>
-    <a class="cta" href="https://2event.com/org?lang=uk">Кабінет організатора</a>
-  </nav>
-</div></header>
+<header class="hf-header">
+  <div class="hf-in hf-bar">
+    <a class="hf-logo" href="https://2event.com/" aria-label="2Event — головна"><b>2</b>EVENT</a>
+    <nav class="hf-primary" aria-label="Головне меню">
+      <a href="https://2event.com/events">Події</a>
+      <a href="https://2event.com/for-organizers">Для організаторів</a>
+      <a href="https://2event.com/networking">Знайомства</a>
+    </nav>
+    <div class="hf-actions">
+      <nav class="hf-language" aria-label="Мова сайту 2event.com">
+        <span>Мова сайту:</span><a href="https://2event.com/?lang=uk" lang="uk" hreflang="uk">UA</a><a href="https://2event.com/?lang=en" lang="en" hreflang="en">EN</a>
+      </nav>
+      <a class="hf-login" href="https://2event.com/login">Увійти</a>
+      <a class="hf-create" href="https://2event.com/org/create">Створити подію</a>
+      <details class="hf-mobile">
+        <summary>Меню</summary>
+        <div class="hf-mobile-panel">
+          <nav aria-label="Головне меню на телефоні">
+            <a href="https://2event.com/events">Події</a>
+            <a href="https://2event.com/for-organizers">Для організаторів</a>
+            <a href="https://2event.com/networking">Знайомства</a>
+          </nav>
+          <a class="hf-create" href="https://2event.com/org/create">Створити подію</a>
+          <div class="hf-language" role="group" aria-label="Мова сайту 2event.com">
+            <span>Мова сайту:</span><a href="https://2event.com/?lang=uk" lang="uk" hreflang="uk">UA</a><a href="https://2event.com/?lang=en" lang="en" hreflang="en">EN</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
 <div class="wrap">
 <nav class="toc" aria-label="Зміст">
   <div class="brand">2<span>event</span> · інструкція</div>
@@ -265,17 +328,30 @@ footer.foot nav{display:flex;flex-wrap:wrap;gap:6px 18px}
 </div>
 </main>
 </div>
-<footer class="foot"><div class="in">
-  <div>© 2event, квитки та знайомства на подіях. <a href="https://2event.com/?lang=uk">2event.com</a></div>
-  <nav aria-label="Підвал">
-    <a href="https://2event.com/org?lang=uk">Кабінет організатора</a>
-    <a href="https://2event.com/login?lang=uk">Вхід</a>
-    <a href="https://2event.com/me/tickets?lang=uk">Мої квитки</a>
-    <a href="https://2event.com/privacy">Конфіденційність</a>
-    <a href="https://2event.com/terms">Умови</a>
-    <a href="https://help.2event.com/">Інструкція організатора</a>
-  </nav>
-</div></footer>
+<footer class="hf-footer">
+  <div class="hf-in">
+    <div class="hf-footer-top">
+      <div><a class="hf-logo" href="https://2event.com/" aria-label="2Event — головна"><b>2</b>EVENT</a><p>Квитки та знайомства на подіях.</p></div>
+      <nav aria-label="Платформа"><h2>Платформа</h2><ul>
+        <li><a href="https://2event.com/events">Події</a></li>
+        <li><a href="https://2event.com/about">Про 2Event</a></li>
+        <li><a href="https://2event.com/networking">Знайомства</a></li>
+      </ul></nav>
+      <nav aria-label="Організаторам"><h2>Організаторам</h2><ul>
+        <li><a href="https://2event.com/for-organizers">Для організаторів</a></li>
+        <li><a href="https://2event.com/org/create">Створити подію</a></li>
+      </ul></nav>
+      <nav aria-label="Допомога"><h2>Допомога</h2><ul>
+        <li><a href="https://2event.com/support">Підтримка</a></li>
+        <li><a href="https://2event.com/me/tickets">Мої квитки</a></li>
+      </ul></nav>
+    </div>
+    <div class="hf-footer-bottom">
+      <nav aria-label="Юридична інформація"><a href="https://2event.com/terms">Умови</a><a href="https://2event.com/privacy">Конфіденційність</a></nav>
+      <small>© 2026 2Event</small>
+    </div>
+  </div>
+</footer>
 
 <script>
 (function(){
