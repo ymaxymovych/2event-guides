@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>Інструкція організатора 2event</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap">
@@ -83,7 +84,7 @@ body{--body:'Noto Sans',sans-serif;--display:'Unbounded',sans-serif}
 .hf-in{width:100%;max-width:1280px;margin-inline:auto;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
 .hf-bar{display:flex;align-items:center;gap:24px;min-height:72px}
 .hf-logo{display:inline-flex;align-items:center;flex-shrink:0;min-height:44px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em;line-height:1}
-.hf-logo b{color:var(--hf-brand);font-weight:inherit}
+.hf-mark{width:28px;height:28px;flex:none;margin-right:10px}.hf-wordmark{font-family:'Unbounded',sans-serif;font-weight:700;letter-spacing:-.01em}.hf-footer .hf-wordmark{color:#fff}
 .hf-primary{display:flex;align-items:center;gap:24px;margin-right:auto}
 .hf-primary a,.hf-language a,.hf-login{display:inline-flex;align-items:center;min-height:44px;font-weight:600;white-space:nowrap}
 .hf-actions{display:flex;align-items:center;gap:16px;margin-left:auto}
@@ -130,7 +131,31 @@ body{--body:'Noto Sans',sans-serif;--display:'Unbounded',sans-serif}
 
 <header class="hf-header">
   <div class="hf-in hf-bar">
-    <a class="hf-logo" href="https://2event.com/" aria-label="2Event — головна"><b>2</b>EVENT</a>
+    <a class="hf-logo" href="https://2event.com/" aria-label="2Event — головна"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hf-mark" aria-hidden="true" focusable="false">
+  <title>2event: ticket, plane, car and bed</title>
+  <!-- 240px tiles, 32px gutter (6.25%), corner radius 18%. No font or external assets. -->
+  <g id="ticket">
+    <rect width="240" height="240" rx="43.2" fill="#ff782b"/>
+    <!-- Semicircular notches and three transparent tear-line dashes. -->
+    <path fill="white" fill-rule="evenodd" d="M44 68H196V103A17 17 0 0 0 196 137V172H44V137A17 17 0 0 0 44 103Z M145 80H154V100H145Z M145 110H154V130H145Z M145 140H154V160H145Z"/>
+  </g>
+  <g id="plane" transform="translate(272 0)">
+    <rect width="240" height="240" rx="43.2" fill="#2d7ff9"/>
+    <path fill="white" d="M120 34C126 34 130 43 130 52V91L202 131V149L130 127V169L155 187V201L120 191L85 201V187L110 169V127L38 149V131L110 91V52C110 43 114 34 120 34Z"/>
+  </g>
+  <g id="car" transform="translate(0 272)">
+    <rect width="240" height="240" rx="43.2" fill="#2eb872"/>
+    <path fill="white" fill-rule="evenodd" d="M31 123L59 115L83 78H148L179 115L202 122Q211 125 211 137V158H29V136Q29 128 31 123Z M88 93L73 116H117V93Z M129 93V116H161L142 93Z"/>
+    <circle cx="72" cy="164" r="18" fill="white"/>
+    <circle cx="171" cy="164" r="18" fill="white"/>
+  </g>
+  <g id="bed" transform="translate(272 272)">
+    <rect width="240" height="240" rx="43.2" fill="#ef4b4b"/>
+    <path fill="white" d="M40 72H59V126H192Q202 126 202 136V184H183V163H59V184H40Z"/>
+    <rect x="68" y="99" width="42" height="20" rx="7" fill="white"/>
+    <path fill="white" d="M120 96H181Q202 96 202 117V119H120Z"/>
+  </g>
+</svg><span class="hf-wordmark">2event</span></a>
     <nav class="hf-primary" aria-label="Головне меню">
       <a href="https://2event.com/events">Події</a>
       <a href="https://2event.com/for-organizers">Для організаторів</a>
@@ -331,7 +356,31 @@ body{--body:'Noto Sans',sans-serif;--display:'Unbounded',sans-serif}
 <footer class="hf-footer">
   <div class="hf-in">
     <div class="hf-footer-top">
-      <div><a class="hf-logo" href="https://2event.com/" aria-label="2Event — головна"><b>2</b>EVENT</a><p>Квитки та знайомства на подіях.</p></div>
+      <div><a class="hf-logo" href="https://2event.com/" aria-label="2Event — головна"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hf-mark" aria-hidden="true" focusable="false">
+  <title>2event: ticket, plane, car and bed</title>
+  <!-- 240px tiles, 32px gutter (6.25%), corner radius 18%. No font or external assets. -->
+  <g id="ticket">
+    <rect width="240" height="240" rx="43.2" fill="#ff782b"/>
+    <!-- Semicircular notches and three transparent tear-line dashes. -->
+    <path fill="white" fill-rule="evenodd" d="M44 68H196V103A17 17 0 0 0 196 137V172H44V137A17 17 0 0 0 44 103Z M145 80H154V100H145Z M145 110H154V130H145Z M145 140H154V160H145Z"/>
+  </g>
+  <g id="plane" transform="translate(272 0)">
+    <rect width="240" height="240" rx="43.2" fill="#2d7ff9"/>
+    <path fill="white" d="M120 34C126 34 130 43 130 52V91L202 131V149L130 127V169L155 187V201L120 191L85 201V187L110 169V127L38 149V131L110 91V52C110 43 114 34 120 34Z"/>
+  </g>
+  <g id="car" transform="translate(0 272)">
+    <rect width="240" height="240" rx="43.2" fill="#2eb872"/>
+    <path fill="white" fill-rule="evenodd" d="M31 123L59 115L83 78H148L179 115L202 122Q211 125 211 137V158H29V136Q29 128 31 123Z M88 93L73 116H117V93Z M129 93V116H161L142 93Z"/>
+    <circle cx="72" cy="164" r="18" fill="white"/>
+    <circle cx="171" cy="164" r="18" fill="white"/>
+  </g>
+  <g id="bed" transform="translate(272 272)">
+    <rect width="240" height="240" rx="43.2" fill="#ef4b4b"/>
+    <path fill="white" d="M40 72H59V126H192Q202 126 202 136V184H183V163H59V184H40Z"/>
+    <rect x="68" y="99" width="42" height="20" rx="7" fill="white"/>
+    <path fill="white" d="M120 96H181Q202 96 202 117V119H120Z"/>
+  </g>
+</svg><span class="hf-wordmark">2event</span></a><p>Квитки та знайомства на подіях.</p></div>
       <nav aria-label="Платформа"><h2>Платформа</h2><ul>
         <li><a href="https://2event.com/events">Події</a></li>
         <li><a href="https://2event.com/about">Про 2Event</a></li>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>2event: ticket, plane, car and bed</title>
+  <!-- 240px tiles, 32px gutter (6.25%), corner radius 18%. No font or external assets. -->
+  <g id="ticket">
+    <rect width="240" height="240" rx="43.2" fill="#ff782b"/>
+    <!-- Semicircular notches and three transparent tear-line dashes. -->
+    <path fill="white" fill-rule="evenodd" d="M44 68H196V103A17 17 0 0 0 196 137V172H44V137A17 17 0 0 0 44 103Z M145 80H154V100H145Z M145 110H154V130H145Z M145 140H154V160H145Z"/>
+  </g>
+  <g id="plane" transform="translate(272 0)">
+    <rect width="240" height="240" rx="43.2" fill="#2d7ff9"/>
+    <path fill="white" d="M120 34C126 34 130 43 130 52V91L202 131V149L130 127V169L155 187V201L120 191L85 201V187L110 169V127L38 149V131L110 91V52C110 43 114 34 120 34Z"/>
+  </g>
+  <g id="car" transform="translate(0 272)">
+    <rect width="240" height="240" rx="43.2" fill="#2eb872"/>
+    <path fill="white" fill-rule="evenodd" d="M31 123L59 115L83 78H148L179 115L202 122Q211 125 211 137V158H29V136Q29 128 31 123Z M88 93L73 116H117V93Z M129 93V116H161L142 93Z"/>
+    <circle cx="72" cy="164" r="18" fill="white"/>
+    <circle cx="171" cy="164" r="18" fill="white"/>
+  </g>
+  <g id="bed" transform="translate(272 272)">
+    <rect width="240" height="240" rx="43.2" fill="#ef4b4b"/>
+    <path fill="white" d="M40 72H59V126H192Q202 126 202 136V184H183V163H59V184H40Z"/>
+    <rect x="68" y="99" width="42" height="20" rx="7" fill="white"/>
+    <path fill="white" d="M120 96H181Q202 96 202 117V119H120Z"/>
+  </g>
+</svg>
